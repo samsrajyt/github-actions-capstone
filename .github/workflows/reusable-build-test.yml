@@ -50,7 +50,7 @@ jobs:
       - name: Run tests
         id: exit_code
         run: |
-          python test_run.py
+          python test_app.py
 
 
       - name: Set final output
