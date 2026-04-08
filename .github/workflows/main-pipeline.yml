@@ -27,7 +27,9 @@ jobs:
     with:
       image_name: "flask-app"
       tag: sha-${{ needs.generate-sha.outputs.tag }}
-  
+    secrets:
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_token: ${{ secrets.DOCKER_PASSWORD }} 
       
   deploy:
     needs: build-and-push
