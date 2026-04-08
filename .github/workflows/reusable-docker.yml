@@ -22,6 +22,7 @@ on:
   
     outputs:
       image_url:
+        description: "The full image path"
         value: ${{ jobs.reusable-build-and-push.outputs.image_url }}
 
 
