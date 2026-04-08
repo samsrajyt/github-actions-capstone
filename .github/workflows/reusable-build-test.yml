@@ -45,6 +45,7 @@ jobs:
         id: exit_code
         if : ${{ inputs.run_tests == true }}
         run: |
+
           pytest test_run.py
           
 
