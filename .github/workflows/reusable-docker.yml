@@ -22,14 +22,15 @@ on:
   
     outputs:
       image_url:
-        value: ${{ jobs.reusable-build-and-push.outputs.var }}
+        value: ${{ jobs.reusable-build-and-push.outputs.image_url }}
 
 
 jobs:
   reusable-build-and-push:
     runs-on: ubuntu-latest
+
     outputs:
-      var: ${{ steps.image_id.outputs.image_url }}
+      image_url: ${{ steps.image_id.outputs.image_url }}
 
 
     steps:
@@ -58,7 +59,7 @@ jobs:
       - name: image url
         id: image_id
         run: |
-          image_url=${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
-          echo "image_url=$(cat << 'EOF' $image_url EOF )" >> $GITHUB_OUTPUT
+          echo "image_url=${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}" >> $GITHUB_OUTPUT
+           
 
 
