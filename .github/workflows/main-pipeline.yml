@@ -12,6 +12,8 @@ jobs:
   
   generate-sha:
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
     steps:
       - name: tag_name
         id: tag
@@ -24,7 +26,7 @@ jobs:
     uses: ./.github/workflows/reusable-docker.yml
     with:
       image_name: "flask-app"
-      tag: ${{ needs.jobs.generate-sha.outputs.tag }}
+      tag: sha-${{ needs.generate-sha.outputs.tag }}
   
       
   deploy:
