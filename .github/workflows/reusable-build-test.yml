@@ -45,8 +45,8 @@ jobs:
         id: exit_code
         if : ${{ inputs.run_tests == true }}
         run: |
-          python run.py
-          pytest test_run.py -q --tb=no
+          sudo python run.py
+          pytest test_run.py
           
 
       - name: Set final output
