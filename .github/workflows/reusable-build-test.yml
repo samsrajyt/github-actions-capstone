@@ -38,14 +38,13 @@ jobs:
 
 
       - name: Install Dependencies
-        run: pip install -r ./app/requirements.txt
+        run: pip install -r requirements.txt
 
 
       - name: Run test
         id: exit_code
         if : ${{ inputs.run_tests == true }}
         run: |
-          cd app/
           python run.py
           pytest test_run.py -q --tb=no
           
