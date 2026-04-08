@@ -14,8 +14,8 @@ jobs:
       - name: Docker login
         uses: docker/login-action@v4
         with:
-          username: ${{ vars.docker_username }}
-          password: ${{ secrets.docker_token }}
+          username: ${{ vars.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Pull the image
         run: |
