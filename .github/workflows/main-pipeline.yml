@@ -9,13 +9,21 @@ jobs:
     with:
       python_version: 3.14
       run_tests: true
+  
+  generate-sha:
+    runs-on: ubuntu-latest
+    steps:
+      - name: tag_name
+        id: tag
+        run: |
+          echo "tag=echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
 
 
   build-and-push:
-    needs: build-and-test
+    needs: [build-and-test,generate-sha]
     uses: ./.github/workflows/reusable-docker.yml
     with:
-      tag: $(echo ${{ github.sha }} | cut -c1-7)
+      tag: ${{ needs.generate-sha.outputs.tag }}
   
   deploy:
     needs: build-and-push
