@@ -29,8 +29,7 @@ jobs:
   reusable-build-and-push:
     runs-on: ubuntu-latest
     outputs:
-      image_url:
-          ${{ steps.image_id.outputs.image_url }}
+      image_url: ${{ steps.image_id.outputs.image_url }}
 
 
     steps:
