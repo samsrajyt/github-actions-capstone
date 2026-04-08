@@ -20,7 +20,7 @@ jobs:
 
 
   build-and-push:
-    needs: [build-and-test,generate-sha]
+    needs: [build-and-test, generate-sha]
     uses: ./.github/workflows/reusable-docker.yml
     with:
       image_name: "flask-app"
