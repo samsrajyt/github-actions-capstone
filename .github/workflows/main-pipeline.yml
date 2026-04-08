@@ -25,7 +25,7 @@ jobs:
     needs: [build-and-test, generate-sha]
     uses: ./.github/workflows/reusable-docker.yml
     with:
-      image_name: "flask-app"
+      image_name: 'flask-app'
       tag: sha-${{ needs.generate-sha.outputs.tag }}
     secrets:
       docker_username: ${{ secrets.DOCKER_USERNAME }}

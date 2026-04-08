@@ -54,12 +54,12 @@ jobs:
           file: Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/${{ inputs.image-name }}:${{ inputs.tag }}
+            ${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
 
       - name: image url
         id: image_id
         run: |
-          image_url=${{ secrets.DOCKER_USERNAME }}/${{ inputs.image-name }}:${{ inputs.tag }}
+          image_url=${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
           echo "$image_url" >> $GITHUB_OUTPUT
 
 
