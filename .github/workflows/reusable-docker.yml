@@ -59,6 +59,6 @@ jobs:
         id: image_id
         run: |
           image_url=${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
-          echo "image_url=$(cat << 'EOF' $image_url EOF" >> $GITHUB_OUTPUT
+          echo "image_url=$(cat << 'EOF' $image_url EOF )" >> $GITHUB_OUTPUT
 
 
