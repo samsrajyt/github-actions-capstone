@@ -1,0 +1,41 @@
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '0 */12 * * *'
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v6
+
+      - name: Docker login
+        uses: docker/login-action@v4
+        with:
+          username: ${{ vars.docker_username }}
+          password: ${{ secrets.docker_token }}
+
+      - name: Pull the image
+        run: |
+          docker pull ${{ vars.DOCKER_USERNAME }}/flask-app:latest
+
+      - name: Run the image in detached mode
+        run: |
+          docker run -d --name flask-app -p 80:80 ${{ vars.DOCKER_USERNAME }}/flask-app:latest
+
+      - name: Sleep
+        run: |
+          sleep 5 
+          chmod +x test_app.py
+          python test_app.py
+
+      - name: Stop and remove container
+        run: |
+          docker stop flask-app
+          docker rm flask-app
+          
+          
+       
+          

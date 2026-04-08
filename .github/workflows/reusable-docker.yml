@@ -56,6 +56,7 @@ jobs:
           push: true
           tags: |
             ${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
+            ${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:latest
 
       - name: image url
         id: image_id
