@@ -41,13 +41,18 @@ jobs:
         run: pip install -r requirements.txt
 
 
-      - name: Run test
-        id: exit_code
+      - name: Run Flask app
         if : ${{ inputs.run_tests == true }}
         run: |
-
-          pytest test_run.py
+          python run.py &
+          sleep 5 
           
+      - name: Run tests
+        needs: 
+        id: exit_code
+        run: |
+          python test_run.py
+
 
       - name: Set final output
         id: test_result
