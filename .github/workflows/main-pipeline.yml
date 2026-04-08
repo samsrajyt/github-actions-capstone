@@ -7,7 +7,7 @@ jobs:
   build-and-test:
     uses: ./.github/workflows/reusable-build-test.yml
     with:
-      python_version: '3.14'
+      python_version: 3.14
       run_tests: true
   
   generate-sha:
