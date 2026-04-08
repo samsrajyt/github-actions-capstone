@@ -22,14 +22,14 @@ on:
   
     outputs:
       image_url:
-        value: ${{ jobs.reusable-build-and-push.outputs.image_url }}
+        value: ${{ jobs.reusable-build-and-push.outputs.var }}
 
 
 jobs:
   reusable-build-and-push:
     runs-on: ubuntu-latest
     outputs:
-      image_url: ${{ steps.image_id.outputs.image_url }}
+      var: ${{ steps.image_id.outputs.image_url }}
 
 
     steps:
