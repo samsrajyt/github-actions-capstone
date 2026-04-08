@@ -24,8 +24,9 @@ jobs:
     uses: ./.github/workflows/reusable-docker.yml
     with:
       image_name: "flask-app"
-      tag: ${{ needs.generate-sha.outputs.tag }}
+      tag: ${{ needs.jobs.generate-sha.outputs.tag }}
   
+      
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
