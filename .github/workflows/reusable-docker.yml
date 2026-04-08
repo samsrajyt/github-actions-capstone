@@ -29,7 +29,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6
-
+      
+      - run: |
+          echo "Secret is set: ${{ secrets.DOCKER_USERNAME != '' }}"
+          echo "Secret is set: ${{ secrets.DOCKER_PASSWORD != '' }}"
 
       - name: Docker login
         uses: docker/login-action@v4
