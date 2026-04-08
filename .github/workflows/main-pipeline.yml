@@ -1,0 +1,30 @@
+on:
+  push:
+    branches: [main]
+
+
+jobs:
+  build-and-test:
+    uses: ./.github/workflows/reusable-build-test.yml
+    with:
+      python_version: 3.14
+      run_tests: true
+
+
+  build-and-push:
+    needs: build-and-test
+    uses: ./.github/workflows/reusable-docker.yml
+    with:
+      tag: $(echo ${{ github.sha }} | cut -c1-7)
+  
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: deploying image
+        run: |
+          echo "Deploying Image: ${{ needs.build-and-push.outputs.image_url }}"
+
+
+
