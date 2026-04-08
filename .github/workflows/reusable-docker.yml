@@ -40,8 +40,8 @@ jobs:
       - name: build image
         uses: docker/build-push-action@v7
         with:
-          context: ./AI-BankApp-DevOps
-          file: ./AI-BankApp-DevOps/Dockerfile.multistage
+          context: .
+          file: Dockerfile
           push: true
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/${{ inputs.image-name }}:${{ inputs.tag }}
