@@ -52,7 +52,7 @@ jobs:
           
 
       - name: Health Check Report
-        if: [ ${{ steps.flag_success.outputs.status }} == "passed" ]
+        if: [[ ${{ steps.flag_success.outputs.status }} == "passed" ]]
         run: |
           echo "## Health Check Report" >> $GITHUB_STEP_SUMMARY
           echo "- Image: flask-app:latest" >> $GITHUB_STEP_SUMMARY
