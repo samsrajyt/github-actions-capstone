@@ -1,7 +1,6 @@
 
 on:
-permissions:
-  ccontents: read
+
   workflow_call:
 
     inputs:
@@ -19,7 +18,8 @@ permissions:
       test_result:
         value: ${{ jobs.build-and-test.outputs.test_result }}
 
-
+permissions:
+  ccontents: read
 
 
 

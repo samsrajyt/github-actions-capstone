@@ -1,9 +1,10 @@
-on: null
-permissions:
-  content: read
+on:
+
   push:
     branches: [main]
 
+permissions:
+  content: read
 
 jobs:
   build-and-test:
