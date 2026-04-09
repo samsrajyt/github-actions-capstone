@@ -69,7 +69,7 @@ jobs:
           image-ref: ${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
           format: 'table'
           output: 'trivy-report.txt'
-          severity: 'CRITICAL'
+          severity: 'CRITICAL,HIGH'
           exit-code: '1'
 
 
