@@ -1,5 +1,8 @@
 name: PR-pipeline
 on:
+  permisions:
+    contents: read
+    
   pull_request:
     branches: [main]
     types: [opened, synchronize]

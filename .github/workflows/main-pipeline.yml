@@ -1,4 +1,6 @@
 on:
+  permissions:
+    content: read
   push:
     branches: [main]
 
