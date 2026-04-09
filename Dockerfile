@@ -11,7 +11,7 @@ WORKDIR /app
 COPY . .
 
 # Run the build commands
-
+RUN apt-get update && apt-get upgrade -y
 RUN pip install -r requirements.txt
 
 # expose port 80
