@@ -31,14 +31,15 @@ jobs:
           pip install -r requirements.txt
           chmod +x test_app.py
           python test_app.py
+
       - name: Check for Success
-        step_id: flag_success
+        id: flag_success
         if: ${{ success() }}
         run: |
           echo "Status=passed" >> $GITHUB_OUTPUT
 
       - name: Run on failure
-        step_id: flag_failure
+        id: flag_failure
         if: ${{ failure()}}
         run: |
           echo "Status=failed" >> $GITHUB_OUTPUT
