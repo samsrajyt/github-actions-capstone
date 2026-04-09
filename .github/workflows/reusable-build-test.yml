@@ -1,5 +1,7 @@
 
 on:
+permissions:
+  ccontents: read
   workflow_call:
 
     inputs:

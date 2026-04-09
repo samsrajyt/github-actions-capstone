@@ -1,6 +1,6 @@
 on:
-  permissions:
-    contents: read
+permissions:
+  contents: read
   workflow_dispatch:
 
   schedule:
