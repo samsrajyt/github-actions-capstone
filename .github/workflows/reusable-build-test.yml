@@ -40,7 +40,11 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
 
-
+      - name: Check Dependencies for Vulnerabilities 
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: critical
+          
       - name: Run Flask app
         if : ${{ inputs.run_tests == true }}
         run: |
