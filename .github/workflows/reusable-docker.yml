@@ -71,7 +71,7 @@ jobs:
           output: 'trivy-results.sarif'
           severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
           trivyignores: ${{ github.workspace }}/.trivyignore
-          exit-code: '0'
+          
 
       - name: Trivy upload
         uses: github/codeql-action/upload-sarif@v3
