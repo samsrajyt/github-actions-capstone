@@ -62,6 +62,22 @@ jobs:
         id: image_id
         run: |
           echo "image_url=${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}" >> $GITHUB_OUTPUT
+
+      - name: Trivy Scan     
+        uses: aquasecurity/trivy-action@0.35.0
+        with:
+          image-ref: ${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
+          format: 'sarif'
+          output: 'trivy-report.sarif'
+          severity: 'CRITICAL'
+          exit-code: '1'
+
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: 'trivy-results.sarif'
+
            
 
 
