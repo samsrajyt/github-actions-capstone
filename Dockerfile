@@ -12,6 +12,7 @@ COPY . .
 
 # Run the build commands
 RUN apt-get update && apt-get upgrade -y
+RUN apt install --only-upgrade libncursesw6 libtinfo6 ncurses-base ncurses-bin libsystemd0 libudev1
 RUN pip install -r requirements.txt
 
 # expose port 80
