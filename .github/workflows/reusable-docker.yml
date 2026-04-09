@@ -64,7 +64,7 @@ jobs:
           echo "image_url=${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}" >> $GITHUB_OUTPUT
 
       - name: Trivy Scan     
-        uses: aquasecurity/trivy-action@main
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: ${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
           format: 'table'
