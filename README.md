@@ -1,5 +1,6 @@
 A minimal Flask web application built for learning containerization.
 
+![](https://github.com/samsrajyt/github-actions-capstone/actions/workflows/health-check.yml/badge.svg) ![](https://github.com/samsrajyt/github-actions-capstone/actions/workflows/main-pipeline.yml/badge.svg)![](https://github.com/samsrajyt/github-actions-capstone/actions/workflows/pr-pipeline.yml/badge.svg) 
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue)
 ![Flask](https://img.shields.io/badge/Flask-3.1.1-green)
