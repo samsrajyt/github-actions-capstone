@@ -33,35 +33,26 @@ jobs:
           python test_app.py
 
       - name: Check for Success
-        id: flag_success
         if: ${{ success() }}
         run: |
-          echo "Status=passed" >> $GITHUB_OUTPUT
+          echo "Status=passed"
+          echo "## Health Check Report" >> $GITHUB_STEP_SUMMARY
+          echo "- Image: myapp:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: PASSED" >> $GITHUB_STEP_SUMMARY
+          echo "- Time: $(date)" >> $GITHUB_STEP_SUMMARY
 
       - name: Run on failure
-        id: flag_failure
         if: ${{ failure()}}
         run: |
-          echo "Status=failed" >> $GITHUB_OUTPUT
+          echo "Status=failed"
+          echo "Failed to generate health check report"
           
       - name: Stop and remove container
-        if: 
+        if: always()
         run: |
           docker stop flask-app
           docker rm flask-app
           
 
-      - name: Health Check Report
-        if: [[ ${{ steps.flag_success.outputs.status }} == "passed" ]]
-        run: |
-          echo "## Health Check Report" >> $GITHUB_STEP_SUMMARY
-          echo "- Image: flask-app:latest" >> $GITHUB_STEP_SUMMARY
-          echo "- Status: PASSED" >> $GITHUB_STEP_SUMMARY
-          echo "- Time: $(date)" >> $GITHUB_STEP_SUMMARY
 
-      - name: Health Check Report Failure
-        if: [[ ${{ steps.flag_failure.outputs.Status }} == "failed" ]] || ${{ failure() }}
-        run: |
-          echo "Failed to generate health check report"
-       
           
