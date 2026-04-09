@@ -19,7 +19,7 @@ on:
         value: ${{ jobs.build-and-test.outputs.test_result }}
 
 permissions:
-  ccontents: read
+  contents: read
 
 
 
