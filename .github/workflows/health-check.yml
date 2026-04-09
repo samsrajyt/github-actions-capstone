@@ -31,12 +31,36 @@ jobs:
           pip install -r requirements.txt
           chmod +x test_app.py
           python test_app.py
+      - name: Check for Success
+        step_id: flag_success
+        if: ${{ success() }}
+        run: |
+          echo "Status=passed" >> $GITHUB_OUTPUT
 
+      - name: Run on failure
+        step_id: flag_failure
+        if: ${{ failure()}}
+        run: |
+          echo "Status=failed" >> $GITHUB_OUTPUT
+          
       - name: Stop and remove container
+        if: 
         run: |
           docker stop flask-app
           docker rm flask-app
           
-          
+
+      - name: Health Check Report
+        if: ${{ steps.flag_success.outputs.status == "passed" }}
+        run: |
+          echo "## Health Check Report" >> $GITHUB_STEP_SUMMARY
+          echo "- Image: flask-app:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- Status: PASSED" >> $GITHUB_STEP_SUMMARY
+          echo "- Time: $(date)" >> $GITHUB_STEP_SUMMARY
+
+      - name: Health Check Report Failure
+        if: ${{ steps.flag_failure.outputs.Status == "failed" }} || ${{ failure() }}
+        run: |
+          echo "Failed to generate health check report"
        
           
