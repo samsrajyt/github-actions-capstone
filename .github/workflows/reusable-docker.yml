@@ -71,7 +71,7 @@ jobs:
           severity: 'CRITICAL,HIGH'
           exit-code: '1'
 
-      - name: build image
+      - name: push image
         if: ${{ success() }}
         run: |
             docker push ${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
