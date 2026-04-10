@@ -69,8 +69,8 @@ jobs:
           image-ref: ${{ vars.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ inputs.tag }}
           format: 'sarif'
           output: 'trivy-results.sarif'
-          severity: 'UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL'
-          trivyignores: ${{ github.workspace }}/.trivyignore
+          severity: 'HIGH,CRITICAL'
+          
           
 
       - name: Trivy upload
