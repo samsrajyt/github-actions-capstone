@@ -17,10 +17,10 @@ jobs:
       python_version: 3.14
   
   dependencies-scan:
-    - name: Check Dependencies for Vulnerabilities       
-      uses: actions/dependency-review-action@v4
-      with:
-          fail-on-severity: critical
+    name: Check Dependencies for Vulnerabilities       
+    uses: actions/dependency-review-action@v4
+    with:
+      fail-on-severity: critical
 
 
 
