@@ -10,20 +10,28 @@ permissions:
   contents: read
 
 jobs:
+
+  dependencies-scan:
+    name: Dependency Scan
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v6
+    - name: Check Dependencies for Vulnerabilities        
+      uses: actions/dependency-review-action@v4
+      permissions:
+        contents: read
+        security-events: write
+      with:
+        fail-on-severity: critical
+
   build:
     uses: ./.github/workflows/reusable-build-test.yml
     with:
       run_tests: true
       python_version: 3.14
   
-  dependencies-scan:
-    name: Check Dependencies for Vulnerabilities       
-    uses: actions/dependency-review-action@v4
-    permissions:
-      contents: read
-      security-events: write
-    with:
-      fail-on-severity: critical
+ 
 
 
 
