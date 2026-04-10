@@ -11,6 +11,12 @@ permissions:
 
 jobs:
 
+  build:
+    uses: ./.github/workflows/reusable-build-test.yml
+    with:
+      run_tests: true
+      python_version: 3.14
+
   dependencies-scan:
     name: Dependency Scan
     runs-on: ubuntu-latest
@@ -21,15 +27,6 @@ jobs:
       uses: actions/dependency-review-action@v4
       with:
         fail-on-severity: critical
-
-  build:
-    uses: ./.github/workflows/reusable-build-test.yml
-    with:
-      run_tests: true
-      python_version: 3.14
-  
- 
-
 
 
   pr-comment:
