@@ -29,7 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "PR Checks passed for branch : ${{ github.head_ref }}"
+          if [ ${{needs.build.outputs.test_result }} == 'passed' ];then
+            echo "PR Checks passed for branch : ${{ github.head_ref }}"
+          else
+            echo "PR Checks failed for branch : ${{ github.head_ref }}"
+          fi
 
 
 
